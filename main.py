@@ -1,33 +1,57 @@
-produtos = []
+from classProduto import Produto
+import utilsMercado
 
 print("""
-        -- Mini Mercado Bom Preço --
-Olá, bem vindo ao sistema do mercado.""")
+        == Bem vindo ao sistema de cadastro do Mini Mercado Bom Preço ==
+""")
 
 while True:
     print("""
-        - MENU DE OPÇÕES -
-    1. Cadastrar produto no sistema
-        
-    0. Finalizar sistema
-    """)
-    op = input("Digite a opção desejada: ")
+    -- Menu de opções --
+1. Cadastrar produto
+2. Ver lista de produtos
+3. ver informações de um produto
+      
+0. Finalizar sistema
+""")
+    op = input("Digite sua opção: ")
     if op == "1":
         print("""
-    1. CADASTRAR PRODUTO NO SISTEMA
+    -- CASDATRAR PRODUTO --
 """)
         nome = input("Digite o nome do produto: ")
         preco = float(input("Digite o preço do produto: "))
-        lote = input("Digite o código do lote do produto: ")
-        validade = input("Digite a validade do produto (00/00/0000): ")
-        codigo = input("Digite o código de barras do produto: ")
-        descricao = input("Digite uma descrição do produto: ")
+        lote = int(input("Digite a quantidade de lotes: "))
+        validade = input("Digite a validade do lote do protudo: ")
+        codigo = input("Digite o código do produto: ")
+        descricao = input("Digite uma descrição sobre esse produto: ")
 
         novo_produto = {
-            "Nome"
+        "Nome": nome,
+        "Preço": preco,
+        "Lote": lote,
+        "Validade": validade,
+        "Código": codigo,
+        "Descrição": descricao
         }
 
+        utilsMercado.produtos.append(novo_produto)
+
+        Produto(nome, preco, lote, validade, codigo, descricao)
+
+        print("""
+    -- Produto cadastrado com sucesso!
+""")
+    elif op == "2":
+        pass
+    elif op == "3":
+        pass
     elif op == "0":
+        print("""
+        -- Finalizando programa...
+""")
         break
     else:
-        print("Número inválido, digite novamente.")
+        print("Opção inválida, digite novamente.")
+
+input("Digite Enter para fechar.")
