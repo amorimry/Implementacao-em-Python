@@ -1,9 +1,6 @@
 from classProduto import Produto
 import utilsMercado
 
-# Certifique-se de que a importação da classe Produto está no topo deste arquivo, por exemplo:
-# from arquivo_da_classe import Produto
-
 produtos = [
     Produto(
         nome="Arroz Integral",
