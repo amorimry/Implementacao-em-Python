@@ -1,6 +1,8 @@
 from classProduto import Produto
 import utilsMercado
 
+codigos = [3326,5652,1457]
+
 produtos = [
     Produto(
         nome="Arroz Integral",
@@ -44,60 +46,66 @@ print("""
         == Bem vindo ao sistema de cadastro do Mini Mercado Bom Preço ==
 """)
 
-while True:
-    print("""
-    -- Menu de opções --
-1. Cadastrar produto
-2. Ver lista de produtos
-3. ver informações de um produto
-      
-0. Finalizar sistema
-""")
-    op = input("Digite sua opção: ")
-    if op == "1":
+seu_codigo = int(input("Digite seu código para entrar no sistema: "))
+if seu_codigo in codigos:
+
+    while True:
         print("""
-    -- CASDATRAR PRODUTO --
-""")
-        nome = input("Digite o nome do produto: ")
-        preco = float(input("Digite o preço do produto: "))
-        lote = int(input("Digite a quantidade de lotes: "))
-        validade = input("Digite a validade do lote do protudo: ")
-        codigo = input("Digite o código do produto: ")
-        descricao = input("Digite uma descrição sobre esse produto: ")
-
-        produto_objeto = Produto(nome, preco, lote, validade, codigo, descricao)
-
-        produtos.append(produto_objeto)
-
-        print("""
-    -- Produto cadastrado com sucesso!
-""")
+        -- Menu de opções --
+    1. Cadastrar produto
+    2. Ver lista de produtos
+    3. ver informações de um produto0
         
-        input("Digite Enter para voltar ao menu.")
-    elif op == "2":
-        print("""
-    -- LISTA DOS PRODUTOS --
-""")
-        utilsMercado.exibir_produto(produtos)
+    0. Finalizar sistema
+    """)
+        op = input("Digite sua opção: ")
+        if op == "1":
+            print("""
+        -- CASDATRAR PRODUTO --
+    """)
+            nome = input("Digite o nome do produto: ")
+            preco = float(input("Digite o preço do produto: "))
+            lote = int(input("Digite a quantidade de lotes: "))
+            validade = input("Digite a validade do lote do protudo: ")
+            codigo = input("Digite o código do produto: ")
+            descricao = input("Digite uma descrição sobre esse produto: ")
 
-        input("Digite Enter para voltar ao menu.")
-    elif op == "3":
-        print("""
-    -- INFORMAÇÕES DO PRODUTO --
-""")
-        utilsMercado.exibir_produto(produtos)
-        op_produto = int(input("Digite o número do produto que você deseja ver informações: "))
-        indice_ajustado = op_produto - 1
-        produto_escolhido = produtos[indice_ajustado]
-        produto_escolhido.vizualizar_produto()
+            produto_objeto = Produto(nome, preco, lote, validade, codigo, descricao)
 
-        input("Digite Enter para voltar ao menu.")
-    elif op == "0":
-        print("""
-        -- Finalizando programa...
-""")
-        break
-    else:
-        print("Opção inválida, digite novamente.")
+            produtos.append(produto_objeto)
 
-input("Digite Enter para fechar.")
+            print("""
+        -- Produto cadastrado com sucesso!
+    """)
+            
+            input("Digite Enter para voltar ao menu.")
+        elif op == "2":
+            print("""
+        -- LISTA DOS PRODUTOS --
+    """)
+            utilsMercado.exibir_produto(produtos)
+
+            input("Digite Enter para voltar ao menu.")
+        elif op == "3":
+            print("""
+        -- INFORMAÇÕES DO PRODUTO --
+    """)
+            utilsMercado.exibir_produto(produtos)
+            op_produto = int(input("Digite o número do produto que você deseja ver informações: "))
+            indice_ajustado = op_produto - 1
+            produto_escolhido = produtos[indice_ajustado]
+            produto_escolhido.vizualizar_produto()
+
+            input("Digite Enter para voltar ao menu.")
+        elif op == "0":
+            print("""
+            -- Finalizando programa...
+    """)
+            break
+        else:
+            print("Opção inválida, digite novamente.")
+
+    input("Digite Enter para fechar.")
+
+else:
+    print("Código inválido para acesso.")
